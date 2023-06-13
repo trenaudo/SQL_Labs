@@ -7,9 +7,10 @@ USE sakila;
 1.2. Express the average movie duration in hours and minutes. Don't use decimals. Hint: look for floor and round functions.*/
 
 SELECT 
-MIN(length) as min_duration,
-MAX(length) as max_duration,
-ROUND(AVG(length)) as avg_duration
+CONCAT(FLOOR(MIN(length)/60),'h',ROUND(MIN(length)%60),'min') as max_duration,
+CONCAT(FLOOR(AVG(length)/60),'h',ROUND(AVG(length)%60),'min') as avg_duration,
+CONCAT(FLOOR(MAX(length)/60),'h',ROUND(MAX(length)%60),'min') as max_duration
+
 FROM film;
 
 
@@ -110,7 +111,11 @@ ORDER BY ROUND(AVG(length),2) DESC;
 
 
 #4 Determine which last names are not repeated in the table actor. 
+WITH t_last_name as (
 SELECT last_name, COUNT(last_name) AS counter
 FROM actor
 GROUP BY last_name
-HAVING COUNT(last_name) = 1;
+HAVING COUNT(last_name) = 1)
+
+SELECT last_name 
+FROM t_last_name;
