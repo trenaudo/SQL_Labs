@@ -44,3 +44,31 @@ SELECT COUNT(DISTINCT(inventory_id)) as available, COUNT(rental_id) as rented FR
 
 #5.4 Determine the number of distinct last names of the actors in the database.
 SELECT COUNT(DISTINCT(last_name)) as 'distinct last names'  FROM actor;
+
+
+#Retrieve the 10 longest films.
+SELECT title, length
+FROM film
+ORDER BY 2 DESC
+LIMIT 10;
+
+#Use filtering techniques in order to:
+#7.1 Retrieve all actors with the first name "SCARLETT".
+SELECT first_name,last_name
+FROM actor
+WHERE first_name = "SCARLETT";
+
+
+#7.2 Retrieve all movies that have ARMAGEDDON in their title and have a duration longer than 100 minutes.
+SELECT title,length
+FROM film
+WHERE title LIKE "%ARMAGEDDON%"
+AND length > 100;
+
+#Hint: use LIKE operator. More information here.
+
+#7.3 Determine the number of films that include Behind the Scenes content
+SELECT COUNT(film_id) AS behind_the_scenes
+FROM film
+WHERE special_features LIKE "%behind the scenes%"
+
