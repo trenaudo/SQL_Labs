@@ -7,7 +7,7 @@ USE sakila;
 1.2. Express the average movie duration in hours and minutes. Don't use decimals. Hint: look for floor and round functions.*/
 
 SELECT 
-CONCAT(FLOOR(MIN(length)/60),'h',ROUND(MIN(length)%60),'min') as max_duration,
+CONCAT(FLOOR(MIN(length)/60),'h',ROUND(MIN(length)%60),'min') as min_duration,
 CONCAT(FLOOR(AVG(length)/60),'h',ROUND(AVG(length)%60),'min') as avg_duration,
 CONCAT(FLOOR(MAX(length)/60),'h',ROUND(MAX(length)%60),'min') as max_duration
 
